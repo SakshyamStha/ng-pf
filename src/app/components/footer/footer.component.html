@@ -1,0 +1,31 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="logo" (click)="navigate('home')" role="button">
+          <span class="logo-bracket">{{ '{' }}</span>
+<span class="logo-name">SS</span>
+<span class="logo-bracket">{{ '}' }}</span>
+        </a>
+        <p>Building the web, one line at a time.</p>
+      </div>
+      <div class="footer-links">
+        @for (link of links; track link) {
+          <a (click)="navigate(link)" role="button" class="footer-link">
+            {{ link | titlecase }}
+          </a>
+        }
+      </div>
+      <div class="footer-social">
+        @for (s of socials; track s.label) {
+          <a [href]="s.href" [attr.aria-label]="s.name" class="footer-social-link">
+            {{ s.label }}
+          </a>
+        }
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© {{ year }} Sakshyam Shrestha. Crafted with ♥ in Kathmandu.</p>
+    </div>
+  </div>
+</footer>

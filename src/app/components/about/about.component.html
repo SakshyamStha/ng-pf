@@ -1,0 +1,54 @@
+<section class="about section" id="about">
+  <div class="container">
+    <div class="section-label" appReveal="up">
+      <span class="label-line"></span>
+      <span>About Me</span>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-img-col" appReveal="left">
+        <div class="about-img-wrap">
+          <img src="assets/images/about.jpg" alt="Sakshyam at work" loading="lazy" />
+          <div class="about-img-tag">
+            <span>Based in</span>
+            <strong>Kathmandu, NP 🇳🇵</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content" appReveal="right">
+        <h2 class="section-title">
+          Turning ideas<br />into <em>reality</em>
+        </h2>
+        <p class="about-text">
+          I'm Sakshyam Shrestha — a passionate full-stack web developer with a love for
+          building clean, user-centered digital experiences. I bridge the gap between
+          design and engineering, transforming complex ideas into intuitive, performant web applications.
+        </p>
+        <p class="about-text">
+          When I'm not coding, you'll find me exploring Kathmandu's hidden corners,
+          learning new technologies, or contributing to open-source projects.
+        </p>
+
+        <div class="about-highlights">
+          @for (h of highlights; track h.title) {
+            <div class="highlight-item">
+              <span class="highlight-icon">{{ h.icon }}</span>
+              <div>
+                <strong>{{ h.title }}</strong>
+                <p>{{ h.desc }}</p>
+              </div>
+            </div>
+          }
+        </div>
+
+        <a href="#" class="btn btn-primary" download>
+          <span>Download CV</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3v8M4 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

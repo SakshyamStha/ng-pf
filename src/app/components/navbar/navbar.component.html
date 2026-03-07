@@ -1,0 +1,37 @@
+<header class="header" [class.scrolled]="scrolled()">
+  <a class="logo" (click)="navigateTo('home')" role="button" aria-label="Go to top">
+    <span class="logo-bracket">{{ '{' }}</span>
+    <span class="logo-name">SS</span>
+    <span class="logo-bracket">{{ '}' }}</span>
+  </a>
+
+  <nav class="navbar" [class.open]="menuOpen()" aria-label="Main navigation">
+    @for (link of navLinks; track link.id) {
+      <a
+        class="nav-link"
+        [class.active]="activeSection() === link.id"
+        (click)="navigateTo(link.id)"
+        role="button">
+        {{ link.label }}
+      </a>
+    }
+  </nav>
+
+  <div class="header-actions">
+    <button class="theme-toggle" (click)="toggleTheme()" aria-label="Toggle theme">
+      @if (themeService.theme() === 'dark') {
+        <span>☽</span>
+      } @else {
+        <span>☀</span>
+      }
+    </button>
+    <button
+      class="menu-toggle"
+      [class.open]="menuOpen()"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
