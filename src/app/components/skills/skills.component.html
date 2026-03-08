@@ -7,29 +7,39 @@
     <h2 class="section-title text-center" appReveal="up">Tools I Work With</h2>
     <p class="section-sub" appReveal="up">Technologies I've been working with recently</p>
 
-    <div class="skills-grid">
-      @for (cat of categories; track cat.title) {
-        <div class="skill-category" appReveal="up">
-          <h3 class="cat-title">{{ cat.title }}</h3>
-          <div class="skill-list">
-            @for (skill of cat.skills; track skill.name) {
-              <div class="skill-item">
-                <div class="skill-meta">
-                  <span>{{ skill.name }}</span>
-                  <span>{{ skill.level }}%</span>
-                </div>
-                <div class="skill-bar">
-                  <div
-                    class="skill-fill"
-                    #skillFill
-                    [attr.data-width]="skill.level">
+    <div class="carousel-wrapper" (mouseenter)="stopAutoSlide()" (mouseleave)="startAutoSlide()">
+      <button class="carousel-btn prev" (click)="prevSlide()" aria-label="Previous">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" class="nav-icon"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <div class="skills-track" #skillsTrack>
+        @for (cat of categories; track cat.title) {
+          <div class="skill-category" appReveal="up">
+            <h3 class="cat-title">{{ cat.title }}</h3>
+            <div class="skill-list">
+              @for (skill of cat.skills; track skill.name) {
+                <div class="skill-item">
+                  <div class="skill-meta">
+                    <span>{{ skill.name }}</span>
+                    <span>{{ skill.level }}%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div
+                      class="skill-fill"
+                      #skillFill
+                      [attr.data-width]="skill.level">
+                    </div>
                   </div>
                 </div>
-              </div>
-            }
+              }
+            </div>
           </div>
-        </div>
-      }
+        }
+      </div>
+
+      <button class="carousel-btn next" (click)="nextSlide()" aria-label="Next">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" class="nav-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
     </div>
 
     <div class="tech-badges" appReveal="up">

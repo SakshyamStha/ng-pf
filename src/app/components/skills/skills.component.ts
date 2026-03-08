@@ -1,6 +1,6 @@
 import {
   Component, AfterViewInit, QueryList,
-  ViewChildren, ElementRef, PLATFORM_ID, Inject
+  ViewChildren, ElementRef, PLATFORM_ID, Inject, ViewChild, OnDestroy
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { NgStyle } from '@angular/common';
@@ -16,8 +16,11 @@ interface SkillCategory { title: string; skills: Skill[]; }
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css'],
 })
-export class SkillsComponent implements AfterViewInit {
+export class SkillsComponent implements AfterViewInit, OnDestroy {
   @ViewChildren('skillFill') skillFills!: QueryList<ElementRef<HTMLElement>>;
+  @ViewChild('skillsTrack') skillsTrack!: ElementRef<HTMLElement>;
+
+  private slideInterval: any;
 
   categories: SkillCategory[] = [
     {
@@ -89,5 +92,47 @@ export class SkillsComponent implements AfterViewInit {
     );
 
     this.skillFills.forEach(ref => observer.observe(ref.nativeElement));
+
+    this.startAutoSlide();
+  }
+
+  ngOnDestroy(): void {
+    this.stopAutoSlide();
+  }
+
+  startAutoSlide() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    this.stopAutoSlide();
+    this.slideInterval = setInterval(() => {
+      this.nextSlide();
+    }, 5000);
+  }
+
+  stopAutoSlide() {
+    if (this.slideInterval) {
+      clearInterval(this.slideInterval);
+    }
+  }
+
+  nextSlide() {
+    const track = this.skillsTrack?.nativeElement;
+    if (!track) return;
+    const scrollAmount = 332; // Approx card width + gap
+    if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }
+
+  prevSlide() {
+    const track = this.skillsTrack?.nativeElement;
+    if (!track) return;
+    const scrollAmount = 332;
+    if (track.scrollLeft === 0) {
+      track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+    } else {
+      track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    }
   }
 }

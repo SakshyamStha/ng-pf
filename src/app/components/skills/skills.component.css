@@ -1,12 +1,42 @@
 .skills { background: var(--bg); }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px; margin-bottom: 60px;
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 60px;
 }
 
+.carousel-btn {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--text-muted);
+  border-radius: 50%;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.3s;
+  z-index: 2; flex-shrink: 0;
+}
+.carousel-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: scale(1.05); }
+
+.skills-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  gap: 32px;
+  padding: 10px 0;
+  flex: 1;
+  scrollbar-width: none; /* Firefox */
+}
+.skills-track::-webkit-scrollbar { display: none; /* Chrome */ }
+
 .skill-category {
+  min-width: 300px; max-width: 320px;
+  flex: 1 0 auto;
+  scroll-snap-align: center;
   background: var(--surface);
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 20px; padding: 32px;
@@ -54,5 +84,7 @@
 }
 
 @media (max-width: 640px) {
-  .skills-grid { grid-template-columns: 1fr; }
+  .carousel-wrapper { flex-direction: column; }
+  .carousel-btn { display: none; /* Hide arrows on mobile because they can just swipe */ }
+  .skills-track { width: 100%; }
 }

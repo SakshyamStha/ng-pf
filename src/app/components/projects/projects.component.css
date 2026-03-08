@@ -17,15 +17,25 @@
   background: var(--accent); border-color: var(--accent); color: #fff;
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr));
-  gap: 28px;
+.carousel-wrapper {
+  position: relative; width: 100%; display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
 }
+.carousel-btn {
+  background: var(--surface); border: 1px solid rgba(255,255,255,0.15); color: var(--text-muted);
+  border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.3s; z-index: 2; flex-shrink: 0;
+}
+.carousel-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: scale(1.05); }
+
+.projects-track {
+  display: flex; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory;
+  gap: 28px; padding: 20px 0; flex: 1; scrollbar-width: none;
+}
+.projects-track::-webkit-scrollbar { display: none; }
 
 .project-card {
-  background: var(--surface);
-  border: 1px solid rgba(255,255,255,0.07);
+  min-width: 320px; max-width: 440px; flex: 1 0 auto; scroll-snap-align: center;
+  background: var(--surface); border: 1px solid rgba(255,255,255,0.07);
   border-radius: 20px; overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.3s, box-shadow 0.4s;
   position: relative;
@@ -92,5 +102,7 @@
 }
 
 @media (max-width: 640px) {
-  .projects-grid { grid-template-columns: 1fr; }
+  .carousel-wrapper { flex-direction: column; }
+  .carousel-btn { display: none; }
+  .projects-track { width: 100%; }
 }

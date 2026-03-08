@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, AfterViewInit, OnDestroy, ViewChild, ElementRef, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { NgClass } from '@angular/common';
 import { RevealDirective } from '../../directives/reveal.directive';
 
@@ -22,7 +23,10 @@ type Filter = 'all' | 'frontend' | 'fullstack' | 'ui';
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css'],
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('projectsTrack') projectsTrack!: ElementRef<HTMLElement>;
+  
+  private slideInterval: any;
   activeFilter = signal<Filter>('all');
 
   filters: { label: string; value: Filter }[] = [
@@ -79,5 +83,55 @@ export class ProjectsComponent {
 
   setFilter(f: Filter): void {
     this.activeFilter.set(f);
+    // Reset track position if filtered
+    if (this.projectsTrack) {
+      this.projectsTrack.nativeElement.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+  }
+
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+
+  ngAfterViewInit(): void {
+    this.startAutoSlide();
+  }
+
+  ngOnDestroy(): void {
+    this.stopAutoSlide();
+  }
+
+  startAutoSlide() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    this.stopAutoSlide();
+    this.slideInterval = setInterval(() => {
+      this.nextSlide();
+    }, 5000);
+  }
+
+  stopAutoSlide() {
+    if (this.slideInterval) {
+      clearInterval(this.slideInterval);
+    }
+  }
+
+  nextSlide() {
+    const track = this.projectsTrack?.nativeElement;
+    if (!track) return;
+    const scrollAmount = 370; // Approx card width + gap
+    if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }
+
+  prevSlide() {
+    const track = this.projectsTrack?.nativeElement;
+    if (!track) return;
+    const scrollAmount = 370;
+    if (track.scrollLeft === 0) {
+      track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+    } else {
+      track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    }
   }
 }
