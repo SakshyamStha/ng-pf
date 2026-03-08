@@ -23,41 +23,51 @@ export class SkillsComponent implements AfterViewInit {
     {
       title: 'Frontend',
       skills: [
-        { name: 'Angular',          level: 95 },
-        { name: 'HTML5',            level: 90 },
-        { name: 'CSS3 / SCSS',      level: 85 },
-        { name: 'JavaScript ES6+',  level: 80 },
-        { name: 'React.js',         level: 70 },
+        { name: 'Angular', level: 95 },
+        { name: 'HTML5', level: 90 },
+        { name: 'CSS3 / SCSS', level: 85 },
+        { name: 'JavaScript ES6+', level: 80 },
+        { name: 'React.js', level: 70 },
       ],
     },
     {
       title: 'Backend',
       skills: [
-        { name: 'Node.js',     level: 72 },
-        { name: 'Python',      level: 65 },
-        { name: 'MongoDB',     level: 68 },
-        { name: 'PostgreSQL',  level: 60 },
+        { name: 'Node.js', level: 72 },
+        { name: 'Python', level: 65 },
+        { name: 'MongoDB', level: 68 },
+        { name: 'PostgreSQL', level: 60 },
       ],
     },
     {
       title: 'Design & Tools',
       skills: [
-        { name: 'Figma',      level: 78 },
+        { name: 'Figma', level: 78 },
         { name: 'Git / GitHub', level: 82 },
-        { name: 'Docker',     level: 55 },
+        { name: 'Docker', level: 55 },
         { name: 'Linux / CLI', level: 70 },
+      ],
+    },
+    {
+      title: 'AI & Automation',
+      skills: [
+        { name: 'Make.com', level: 85 },
+        { name: 'n8n', level: 80 },
+        // { name: 'OpenAI API', level: 75 },
+        // { name: 'Python Automation', level: 70 },
       ],
     },
   ];
 
   badges = [
-    'Angular','HTML5','CSS3','JavaScript','React','Node.js','Python',
-    'MongoDB','PostgreSQL','Figma','Git','Docker','REST APIs',
+    'Angular', 'HTML5', 'CSS3', 'JavaScript', 'React', 'Node.js', 'Python',
+    'MongoDB', 'PostgreSQL', 'Figma', 'Git', 'Docker', 'REST APIs',
+    'Make.com', 'n8n', 'AI Automation', 'OpenAI'
   ];
 
   skillWidths: number[] = [];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: object) { }
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;

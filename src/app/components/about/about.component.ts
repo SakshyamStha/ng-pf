@@ -10,6 +10,7 @@ import { RevealDirective } from '../../directives/reveal.directive';
 })
 export class AboutComponent {
   highlights = [
+    { icon: '🤖', title: 'AI Automation',    desc: 'Building smart workflows with Make.com & n8n' },
     { icon: '⚡', title: 'Fast Learner',     desc: 'Always keeping up with the latest web technologies' },
     { icon: '🎯', title: 'Detail-Oriented',  desc: 'Pixel-perfect UIs with accessible, clean code' },
     { icon: '🤝', title: 'Collaborative',    desc: 'Love working in teams to ship great products' },

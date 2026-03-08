@@ -13,6 +13,7 @@ export class HeroComponent implements OnInit, OnDestroy {
   showCursor = true;
 
   private phrases = [
+    'AI Automation Workflows',
     'things for the web',
     'clean interfaces',
     'full stack apps',
@@ -33,14 +34,14 @@ export class HeroComponent implements OnInit, OnDestroy {
 
   socials = [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sakshyam-shrestha-839a252b8/', icon: 'LI' },
-    { label: 'GitHub',   href: 'https://github.com/SakshyamStha', icon: 'GH' },
-    { label: 'Instagram',href: 'https://www.instagram.com/_saksham_stha_59/', icon: 'IG' },
+    { label: 'GitHub', href: 'https://github.com/SakshyamStha', icon: 'GH' },
+    { label: 'Instagram', href: 'https://www.instagram.com/_saksham_stha_59/', icon: 'IG' },
   ];
 
   constructor(
     private scrollService: ScrollService,
     @Inject(PLATFORM_ID) private platformId: object
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;

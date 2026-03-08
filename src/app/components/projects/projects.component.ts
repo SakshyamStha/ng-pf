@@ -26,10 +26,11 @@ export class ProjectsComponent {
   activeFilter = signal<Filter>('all');
 
   filters: { label: string; value: Filter }[] = [
-    { label: 'All',        value: 'all'       },
-    { label: 'Frontend',   value: 'frontend'  },
-    { label: 'Full Stack', value: 'fullstack' },
-    { label: 'UI/UX',      value: 'ui'        },
+    { label: 'All',           value: 'all'          },
+    { label: 'AI Automation', value: 'automation' as Filter },
+    { label: 'Frontend',      value: 'frontend'     },
+    { label: 'Full Stack',    value: 'fullstack'    },
+    { label: 'UI/UX',         value: 'ui'           },
   ];
 
   projects: Project[] = [
@@ -56,6 +57,18 @@ export class ProjectsComponent {
       desc: 'A collaborative task manager with real-time updates, user roles, and REST API backend.',
       tags: ['Node.js', 'MongoDB', 'Express'], category: 'fullstack',
       img: 'assets/images/project4.jpg', liveUrl: '#', codeUrl: '#',
+    },
+    {
+      num: '05', title: 'Auto Worklog Generator',
+      desc: 'AI-powered workflow that automatically generates daily worklogs from GitHub and GitLab commits.',
+      tags: ['Make.com', 'n8n', 'OpenAI API'], category: 'automation',
+      img: 'assets/images/project1.jpg', liveUrl: '#', codeUrl: '#',
+    },
+    {
+      num: '06', title: 'Smart Email Analyzer',
+      desc: 'AI automation tool that automatically reads, analyzes, and categorizes incoming emails using LLMs.',
+      tags: ['Make.com', 'Python', 'AI'], category: 'automation',
+      img: 'assets/images/project3.jpg', liveUrl: '#', codeUrl: '#',
     },
   ];
 
