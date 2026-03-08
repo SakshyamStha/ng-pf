@@ -16,13 +16,14 @@
       </div>
       <p class="hero-desc">
         A full-stack developer crafting clean, fast, and accessible digital experiences —
-        from Kathmandu to the global web.
+        powered by state-of-the-art AI automation workflows to build smarter applications.
       </p>
       <div class="hero-cta">
         <button class="btn btn-primary" (click)="navigate('projects')">
           <span>View Work</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
           </svg>
         </button>
         <button class="btn btn-ghost" (click)="navigate('contact')">Let's Talk</button>
@@ -41,10 +42,10 @@
       </div>
       <div class="hero-stats">
         @for (stat of stats; track stat.label) {
-          <div class="stat-card">
-            <span class="stat-num">{{ stat.num }}</span>
-            <span class="stat-label">{{ stat.label }}</span>
-          </div>
+        <div class="stat-card">
+          <span class="stat-num">{{ stat.num }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+        </div>
         }
       </div>
     </div>
@@ -57,9 +58,9 @@
 
   <div class="hero-socials">
     @for (social of socials; track social.label) {
-      <a [href]="social.href" class="social-link" [attr.aria-label]="social.label">
-        {{ social.icon }}
-      </a>
+    <a [href]="social.href" class="social-link" [attr.aria-label]="social.label">
+      {{ social.icon }}
+    </a>
     }
   </div>
 </section>

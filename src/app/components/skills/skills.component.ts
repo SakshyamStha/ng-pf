@@ -43,15 +43,6 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
       ],
     },
     {
-      title: 'Design & Tools',
-      skills: [
-        { name: 'Figma', level: 78 },
-        { name: 'Git / GitHub', level: 82 },
-        { name: 'Docker', level: 55 },
-        { name: 'Linux / CLI', level: 70 },
-      ],
-    },
-    {
       title: 'AI & Automation',
       skills: [
         { name: 'Make.com', level: 85 },
@@ -60,6 +51,16 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
         // { name: 'Python Automation', level: 70 },
       ],
     },
+    {
+      title: 'Design & Tools',
+      skills: [
+        { name: 'Figma', level: 78 },
+        { name: 'Git / GitHub', level: 82 },
+        { name: 'Docker', level: 55 },
+        { name: 'Linux / CLI', level: 70 },
+      ],
+    },
+
   ];
 
   badges = [
