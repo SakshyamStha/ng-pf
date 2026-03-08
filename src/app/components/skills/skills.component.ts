@@ -23,6 +23,7 @@ export class SkillsComponent implements AfterViewInit {
     {
       title: 'Frontend',
       skills: [
+        { name: 'Angular',          level: 95 },
         { name: 'HTML5',            level: 90 },
         { name: 'CSS3 / SCSS',      level: 85 },
         { name: 'JavaScript ES6+',  level: 80 },
@@ -50,7 +51,7 @@ export class SkillsComponent implements AfterViewInit {
   ];
 
   badges = [
-    'HTML5','CSS3','JavaScript','React','Node.js','Python',
+    'Angular','HTML5','CSS3','JavaScript','React','Node.js','Python',
     'MongoDB','PostgreSQL','Figma','Git','Docker','REST APIs',
   ];
 
