@@ -19,10 +19,11 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-  { "glob": "**/*", "input": "public" },
-  { "glob": "**/*", "input": "src/assets", "output": "assets" },
-  { "glob": "CNAME", "input": "src", "output": "/" }
-],
+              "src/favicon.ico",
+              { "glob": "**/*", "input": "public" },
+              { "glob": "**/*", "input": "src/assets", "output": "assets" },
+              { "glob": "CNAME", "input": "src", "output": "/" }
+            ],
             "styles": [
               "src/styles.css"
             ]
